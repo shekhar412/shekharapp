@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+{% load blog_tags %}
+{% load staticfiles%}
+
+    <!-- Main Content -->
+
+
+    {% block container_block %}
+
+    <style>
+    div .box{
+      width: 690px;
+      padding: 10px;
+      border: 2px solid gray;
+      margin-bottom: 15px;
+      border-radius: 15px 50px 30px;
+      border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+
+    }
+    </style>
+
+    <style>
+    div .box1{
+      width: 350px;
+      padding: 10px;
+      border: 2px solid gray;
+      margin-bottom: 10px;
+      border-radius: 15px 50px 30px;
+      border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    }
+    </style>
+
+
+    <style>
+    div .box2{
+      width: 350px;
+      padding: 10px;
+      border: 2px solid gray;
+      margin: 0;
+      border-radius: 15px 50px 30px;
+      border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    }
+    </style>
+
+    <style>
+    div .box4{
+      width: 350px;
+      padding: 10px;
+      border: 2px solid gray;
+      margin-bottom:  10px;
+      border-radius: 15px 50px 30px;
+      border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    }
+    </style>
+
+    <html lang="en" dir="ltr">
+      <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <html lang="en">
+
+          <head>
+
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta name="description" content="">
+            <meta name="author" content="">
+
+            <title>Blog Application</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <!-- Bootstrap core CSS -->
+            <link href="{% static "vendor/bootstrap/css/bootstrap.min.css"%}" rel="stylesheet">
+
+
+            <!-- Custom fonts for this template -->
+            <link href="{%static "vendor/fontawesome-free/css/all.min.css"%}" rel="stylesheet" type="text/css">
+            <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+            <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+            <!-- Custom styles for this template -->
+            <link rel="stylesheet" href="{% static "css/clean-blog.css" %}" >
+            <link rel="stylesheet" href="{% static "css/clean-blog.min.css" %}" >
+
+    <style>
+      #mainNav{
+        position: fixed;
+        height: 100px;
+        width: 100%;
+        top: 0px;
+        right: 0px;
+      }
+    </style>
+
+
+    <style media="screen">
+
+    * {
+    box-sizing: border-box;
+    }
+
+    /* Style the search field */
+    form.example input[type=text] {
+    padding: 8px;
+    font-size: 15px;
+    border: 1px solid grey;
+    float: left;
+    width: 68%;
+    background: #fff;
+    height: 39px;
+    }
+
+    /* Style the submit button */
+    form.example button {
+    float: left;
+    width: 15%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 12px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+    height: 38.5px;
+
+    }
+
+    form.example button:hover {
+    background: #0b7dda;
+    }
+
+    /* Clear floats */
+    form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+    }
+    </style>
+
+          </head>
+
+
+
+
+
+        <meta charset="utf-8">
+        <title>{% block title_block %}Blog Application{% endblock %}</title>
+      </head>
+      <body>
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+          <div class="container">
+            <a class="navbar-brand" href="/"><img src="{% static "img/p-trans2.png" %}" alt="My image"  height="130" width="220"  ></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                  <a class="nav-link" href="/about"><font size="2">About</font></a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="/contact"><font size="2">Contact</font></a>
+                </li>
+
+
+                <li class="nav-item">
+                  <a class="nav-link " href="/add_post"><font size="2">Add Post</font> <span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item">
+                  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+
+
+
+                        <form class="example"  method="GET" action="" >
+        <input type="text" placeholder="Search.." name="q" value="{{request.GET.q}}">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+                  </div>
+                 </li>
+
+
+                  <div class="dropdown">
+                    {% if request.user.is_authenticated %}
+
+                    <button class="btn  btn-outline-info text-green btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                      {%if request.user.profile.image.url %}
+                      <span class="caret">  <img class="rounded-circle account-img" src="{{ request.user.profile.image.url }}" height="32" width="32" ></span>
+                   {% else %}
+                   <span class="caret">  <img class="rounded-circle account-img" src="{% static "img/user.png" %}" height="32" width="32" ></span>
+                  {%endif%}
+                    <span class="caret"> &nbspHi {{request.user|title}}</span></button>
+
+                    <ul class="dropdown-menu" arial-lableledby="navbarDropdown">
+                      <li><a class="dropdown-item btn btn-outline-info  btn-sm" href="/add_profile"><font size="2">Add Profile</font></a></li>
+
+            <li><a class="dropdown-item btn btn-outline-info  btn-sm" href="/profile"><font size="2">Edit Profile</font></a></li>
+                      <li><a class="dropdown-item btn btn-outline-info  btn-sm" href="/accounts/logout"><font size="2">Logout</font></a></li>
+
+                    </ul>
+                    {% else %}
+                    <li class="nav-item">
+                 <a class="nav-link  btn btn-outline-info text-white btn-sm "  href="/accounts/login"><font size="2">Login </font><span class="sr-only">(current)</span></a>
+
+                 </li>
+                 {%endif%}
+                  </div>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+    <!-- Page Header -->
+
+      <header class="masthead" style="background-image: url('static/img/email-bg.jpg'); height:310px;" >
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="container">
+              {% if messages %}
+                 {% for message in messages %}
+
+            <div class="alert alert-{{message.tags }}">
+              {{message}}
+            </div>
+
+                 {% endfor %}
+              {% endif %}
+
+            </div>
+            <div class="site-heading">
+              <h2><span style="color:##f2f2f2;">Welcome {{user.username|title}}</span></h2>
+              <span class="subheading">Enjoy The Blog....</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container " >
+      <div class="row">
+        <div class="col-lg-8 col-md-10 ">
+
+          {%if tag %}
+             <h2>Posts tagged with '{{tag.name}}'</h2>
+          {% endif %}
+            {% for post in post_list%}
+            <div class="box">
+          <div class="post-preview">
+            <div class="media">
+  {%if post.author.profile.image.url %}
+      <img class="rounded-circle account-img" src="{{ post.author.profile.image.url }}" style="width:140px;height:170px;">&nbsp &nbsp &nbsp&nbsp
+      {% else %}
+        <img class="rounded-circle account-img" src="{% static "img/user.png" %}" style="width:140px;height:170px;" >&nbsp &nbsp &nbsp&nbsp
+     {%endif%}
+              <div class="media-body">
+                <h2 class="account-heading"> {{ post.author|upper }}</h2>
+                <a href="{{post.get_absolute_url}}">
+                  <h2 class="post-title">
+                    {{post.title}}
+                  </h2>
+                </a>
+
+                <p class="post-meta"> <span style = "color:#00bfff;"> Published on {{post.publish}} by {{post.author|title}}</span></p>
+              </div>
+            </div>
+<hr>
+            <p class="post-meta"> <span style = "color:#00bfff;"> Tags:
+           {% for tag in post.tags.all %}
+             <a href="{% url 'post_list_by_tag_name' tag.slug %}" class="btn btn-danger">{{tag.name}}</a>
+              {% endfor %}
+             </span></p>
+
+            {{post.body|truncatewords:40|linebreaks}}
+
+          </div>
+          <hr>
+
+        </div>
+
+          {% endfor%}
+
+          <!-- Pager -->
+        </div>
+
+        <div class="col-lg-4 col-md-10 pull-right">
+
+          <div class="post-preview">
+
+<div class="box4">
+            <h3 class="post-subtitle">
+            Total Number of Published Post upto today:<span id='pcount' style = "color:#00bfff; font-weight:bold; font-size:40px; "> {% my_tag %}</span>
+          </h3>
+        </div>
+
+<div class="box1">
+            <p class="post-meta"><span style = "color:#00bfff; font-size:30px; ">Latest Posts:
+            {%show_latest_posts 5 %}  </span>
+          </p>
+          </div>
+          <div class="box2">
+              <h4>Most Commented Post</h4>
+              {% get_most_commented_posts as most_commented_posts %}<hr>
+              <ul>
+                {% for post in most_commented_posts %}
+                <li> <a href="{{post.get_absolute_url}}">
+                  <h6 class="post-title">
+                    {{post.title}}
+                  </h6>
+                </a></li><hr>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+
+
+      </div>
+    </div>
+<hr>
+    {%include 'blog/pagination.html' with page=post_list %}
+
+
+{% endblock %}
+
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://twitter.com/?lang=en">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.facebook.com/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+
+            <li class="list-inline-item">
+              <a href="https://www.instagram.com/accounts/login/?hl=en">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+
+            <li class="list-inline-item">
+              <a href="https://github.com/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Your Website 2018</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static "vendor/jquery/jquery.min.js" %}"></script>
+  <script src="{% static "vendor/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static "js/clean-blog.min.js" %}"></script>
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,24 @@
+<div class="container" align='right'>
+<form action="{% url 'like_post' %}"  method="post">
+{% csrf_token %}
+{% if is_liked %}
+
+<button type="submit" id="like" name="post_id" value="{{post.id}}" class="btn btn-danger rounded-circle " >
+  <i class="far fa-thumbs-down fa-2x" ></i></button>
+{% else %}
+<button type="submit" id="like" name="post_id" value="{{post.id}}" class="btn btn-primary rounded-circle" ><i class="far fa-thumbs-up fa-2x"></i></button>
+{% endif %}
+</form>
+<h3>  {{total_likes}} Like{{total_likes|pluralize}}</h3>
+</div>
+{% if post.author == request.user %}
+<div class="section-1" style="float-left;">
+  <a href="{%url 'update_post' id=post.id %}" >
+    <button type="button" class="btn btn-outline-delete btn-success" name="button">Edit</button>
+  </a>
+  <a href="{%url 'post_delete' id=post.id %}" id="delete">
+    <button type="button" class="btn btn-outline-delete btn-danger " name="button">Delete</button>
+  </a>
+</div>
+
+{%endif%}

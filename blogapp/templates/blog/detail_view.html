@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+{% extends 'blog/base.html'%}
+
+{% load staticfiles%}
+
+    <!-- Main Content -->
+
+
+    <!-- Page Header -->
+
+
+
+      {% block container_block %}
+
+      <style>
+      div .box{
+        width: 100%;
+        padding: 10px;
+        border: 2px solid gray;
+        margin-bottom: 15px;
+        border-radius: 5px 5px 10px;
+
+      }
+      </style>
+
+      <header class="masthead" style="background-image: url('static/img/profile.jpg');height:300px;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 col-md-10 mx-auto">
+            <div class="container">
+              {% if messages %}
+                 {% for message in messages %}
+
+            <div class="alert alert-{{message.tags }}">
+              {{message}}
+            </div>
+
+                 {% endfor %}
+              {% endif %}
+
+            </div>
+            <div class="site-heading">
+              <h2><span style="color:##f2f2f2;">Read the post in details....</span></h2>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container ">
+      <div class="row">
+        <div class="col-lg-12 col-md-10 ">
+
+          <div class="post-preview">
+            <div class="box">
+
+              <h2 class="post-title">
+                {{post.title}}
+
+
+                <hr>
+              </h2>
+
+
+            <p class="post-meta"> <span style = "color:#00bfff;"> Published on {{post.publish}} by {{post.author|title}}</span></p>
+            {{post.body|linebreaks}}
+            <br>
+            <!--include like section file-->
+            <div id="like_section">
+              {% include 'blog/like_section.html'%}
+            </div>
+            <hr>
+            <div class="container" align='center'>
+              <a href="/{{post.id}}/share" class="btn btn-success">Share By Email</a>
+            </div><hr>
+            {% with comments.count as comments_count %}
+            <h2>{{comments_count}} Comment{{comments_count|pluralize}}</h2>
+            {% endwith %}
+            {% if comments %}
+              {% for comment in comments %}
+               <p id='ch'><span style = "color:#00bfff;   border-bottom: 3px solid yellow;">
+                 Comment {{forloop.counter}}: By {{comment.name}} On {{comment.created}}</span></p>
+              <div class="cv">
+                {{comment.body|linebreaks}}
+              </div>
+             {% endfor %}
+                 <hr>
+            {% else %}
+              <p>There Are No Comments Yet!!!</p>
+            {% endif %}
+              {% if csubmit %}
+              <h2>Your Comment Added successfully</h2>
+               {% else %}
+               <h2>You can Submit your comment it is more valueable for us!!</h2>
+
+                 <form method="post">
+                   {{form.as_p}}
+                   {% csrf_token %}
+                   <input type="submit" name="" value="Submit Comment" class="btn btn-primary">
+                 </form>
+              {% endif %}
+          </div>
+
+</div>
+
+        </div>
+
+
+    </div>
+
+
+
+{% endblock %}
+
+
+
+
+
+  </body>
+
+</html>

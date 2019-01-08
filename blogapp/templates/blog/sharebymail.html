@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% extends 'blog/base.html'%}
+
+{% load staticfiles%}
+
+    <!-- Main Content -->
+    {% block container_block %}
+
+    <!-- Page Header -->
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('static/img/home-bg.jpg'); height:310px;" >
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h2> Share By Email</h2>
+          <span class="subheading">This is what I do.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 mx-auto">
+      {%if sent %}
+      <h2>Email Successfully sent!!!</h2>
+      <h3>Post with the title:{{post.title}} information shared by email</h3>
+      {% else %}
+<h2>Post share with Title:{{post.title}} By Email!!!</h2><hr>
+<form method="post">
+  {{form.as_p}}
+  {%csrf_token%}
+  <input type="submit" class="btn btn-success" value="Send Mail">
+</form>
+  </div>
+</div>
+
+{% endif %}
+    {% endblock %}

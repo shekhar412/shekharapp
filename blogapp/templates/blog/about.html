@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends 'blog/base.html'%}
+
+{% load staticfiles%}
+
+    <!-- Main Content -->
+    {% block container_block %}
+
+    <!-- Page Header -->
+    <!-- Page Header -->
+<header class="masthead" style="background-image: url('/static/img/about-bg.jpg');height:310px;">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1>About Me</h1>
+          <span class="subheading">This is what I do.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <p>A blog (shortening of “weblog”) is an online journal or informational website displaying information in the reverse chronological order, with latest posts appearing first. It is a platform where a writer or even a group of writers share their views on an individual subject.</p>
+      <p>Blogs promote perfect reader engagement. Readers get a chance to comment and voice their different concerns to the viewer. Static websites, on the other hand, consists of content presented on static pages. Static websites owners rarely update their pages. Blog owners update their site with new blog posts on a regular basis.</p>
+      <p>Key elements that identify a blog post from a static page include a publishing date, author reference, categories, and tags within a byline. While not all blog posts have all those by line elements, static website pages do not have any of these items.</p>
+      <p>From a visitor perspective, the content on a static site will not change from one visit to the next. The content on a blog, yet, has the potential to offer something new each day, week, or month. Depending on the blog owner’s publishing schedule.</p>
+    </div>
+  </div>
+</div>
+
+
+    {% endblock %}

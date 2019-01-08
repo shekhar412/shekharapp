@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+{% extends 'blog/base.html'%}
+{% load blog_tags %}
+{% load staticfiles%}
+    <!-- Main Content -->
+    {% block container_block %}
+
+
+<style>
+div .content-section{
+  width: 690px;
+  padding: 10px;
+  border: 2px solid gray;
+  margin-bottom: 15px;
+  border-radius: 15px 50px 30px;
+
+}
+</style>
+
+<style>
+div .box1{
+  width: 350px;
+  padding: 10px;
+  border: 2px solid gray;
+  margin-bottom: 10px;
+  border-radius: 15px 50px 30px;
+
+}
+</style>
+
+<style>
+div .box2{
+  width: 350px;
+  padding: 10px;
+  border: 2px solid gray;
+  margin-bottom: 10px;
+  border-radius: 15px 50px 30px;
+
+}
+</style>
+
+    <!-- Page Header -->
+
+      <header class="masthead" style="background-image: url('static/img/profile.jpg');height:310px;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 col-md-10 mx-auto">
+            <div class="container">
+              {% if messages %}
+                 {% for message in messages %}
+
+            <div class="alert alert-{{message.tags }}">
+              {{message}}
+            </div>
+
+                 {% endfor %}
+              {% endif %}
+
+            </div>
+            <div class="site-heading">
+              <h1><span style="color:##f2f2f2;">{{user.username}} Profile</span></h1>
+              <span class="subheading">Add Profile Detail....</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container ">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 ">
+
+          <div class="content-section">
+               <div class="media">
+                 <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" style="width:120px;height:160px;">&nbsp &nbsp &nbsp&nbsp
+                 <div class="media-body">
+                   <h2 class="account-heading">Name : {{ user.username }}</h2>
+                   <p class="text-secondary">Email Id :{{ user.email }}</p>
+
+               </div>
+               <span style="margin-left:10px;"><a class="nav-link btn btn-info btn-sm pull-right height:60px;width:250px rounded-circle" href="/change_password">Change Password </a>
+</span>
+
+               </div><hr>
+               <!-- FORM HERE -->
+               <h2>Profile Info</h2><hr>
+               <form class="" method="post" enctype="multipart/form-data">
+                 {{form.as_p}}
+                 {{p_form.as_p}}
+
+                 {% csrf_token %}
+                 <div class="form-group">
+<input type="submit" name="" class="btn btn-outline-info rounded-circle " value="Add">
+                 </div>
+
+               </form>
+             </div>
+
+          <!-- Pager -->
+
+        </div>
+
+        <div class="col-lg-4 col-md-10 pull-right">
+          <div class="post-preview">
+            <div class="box2">
+            <a href="post.html">
+              <h2 class="post-title">
+              </h2>
+            </a>
+            <h3 class="post-subtitle">
+            Total Number of Published Post upto today:<span id='pcount' style = "color:#00bfff; font-weight:bold; font-size:40px; "> {% my_tag %}</span>
+          </h3>
+        </div>
+
+          <div class="box1">
+            <p class="post-meta"><span style = "color:#00bfff; font-size:30px; ">Latest Posts:
+            {%show_latest_posts 5 %}  </span>
+          </p>
+</div>
+          </div>
+
+
+
+      </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+
+
+
+  </body>
+
+</html>

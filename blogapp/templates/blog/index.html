@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load staticfiles%}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{% static "css/style.css" %}">
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse " style="background-color:  #333333 ;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">BlogForYou</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class=""><a href="#">Home</a></li>
+
+          <li><a href="#">Page 2</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <div class="loginBox">
+   <img src="{% static "img/user.png" %}" height="150" width="150"  alt="My image" class="user">
+<h2>Log In Here</h2>
+<form class="" method="post">
+  <p>Email</p>
+  <input type="text" name=""  placeholder="Enter Email">
+  <p>Password</p>
+  <input type="password" name=""  placeholder="Enter Password">
+  <input type="submit" name=""  value="Sign In">
+  <a href="#">Forgot Password</a>
+
+</form>
+    </div>
+  </body>
+</html>
