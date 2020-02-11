@@ -10,7 +10,7 @@ claptcha==0.3.3
 colorama==0.4.1
 constantly==15.1.0
 defusedxml==0.5.0
-Django==2.1
+Django==2.2.10
 django-filter==2.0.0
 django-mysql==2.4.1
 django-taggit==0.23.0
